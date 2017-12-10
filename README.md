@@ -23,4 +23,4 @@ The `Asciifier` class provides two static methods:
     - 'da': `ø -> oe, å -> aa` instead of the default `ø -> o, å -> a`
     - 'vi': `đ -> d` instead of the default `đ -> dj`
 
-- `Asciifier::unicode_to_latin($string, $force = FALSE, $locale = FALSE)` - transliterates certain non-Latin alphabets into Latin. Currently incomplete
+- `Asciifier::unicode_to_latin($string, $force = FALSE, $locale = FALSE)` - transliterates certain non-Latin alphabets into Latin. Currently incomplete, incorporates conversion rules for: Cyrillic, Greek, Arabic, Hebrew, Thai, Futhark and Katakana.
