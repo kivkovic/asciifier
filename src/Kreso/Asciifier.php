@@ -56,7 +56,7 @@ class Asciifier {
 
 public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE) {
 
-		// http://www.loc.gov/catdir/cpso/romanization/russian.pdf 
+		// http://www.loc.gov/catdir/cpso/romanization/russian.pdf
 		// http://unicode.org/repos/cldr/trunk/common/transforms/Cyrillic-Latin.xml
 		$string = str_replace(
 		   ['Я','ч','Ч','э','Э','є','Є','ш','Ш','щ','Щ','ѕ','Ѕ','ю','Ю','і','І','љ','Љ','њ','Њ','ћ','Ћ','џ','Џ','а',
@@ -70,7 +70,7 @@ public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE
 		   $string
 		);
 
-		// http://unicode.org/repos/cldr/trunk/common/transforms/Greek-Latin.xml 
+		// http://unicode.org/repos/cldr/trunk/common/transforms/Greek-Latin.xml
    		// http://unicode.org/repos/cldr/trunk/common/transforms/Greek-Latin-BGN.xml
 		$string = str_replace(
 		   ['α','Α','η','Η','φ','Ψ','Φ','ψ','ω','Ω','β','Β','γ','Γ','δ','Δ','ε','Ε','ζ','Ζ','θ','Θ','ι','Ι','κ','Κ',
@@ -145,7 +145,7 @@ public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE
 			'ま','みょう',	'みゅう','みゃ','みょ','みゅ','み','む','め','もう','も','や','ゆ','よう','よ','ら','りょう','りゅう','りゃ','りょ',
 			'りゅ','り','る','れ','ろう','ろ','わ','ゐ','ゑ','を','ん','が','ぎょう','ぎゅう','ぎゃ','ぎょ','ぎゅ','ぎ','ぐ','げ','ごう','ご',
 			'ざ','じょう','じゅう','じゃ','じょ','じゅ','じ','ず','ぜ','ぞう','ぞ','だ','ぢ','づ','で','どう','ど','ば','びょう','びゅう','びゃ',
-			'びょ','びゅ','び','ぶ','べ','ぼう','ぼ','ぱ','ぴょう','ぴゅう','ぴゃ','ぴょ','ぴゅ','ぴ','ぷ','ぺ','ぽう','ぽ','ゔ','ゃ','ゅ','ょ',	],  
+			'びょ','びゅ','び','ぶ','べ','ぼう','ぼ','ぱ','ぴょう','ぴゅう','ぴゃ','ぴょ','ぴゅ','ぴ','ぷ','ぺ','ぽう','ぽ','ゔ','ゃ','ゅ','ょ',	],
 		   ['a','i','u','e','ō','o','ka','kyō','kyū','kya','kyo','kyu','ki','ku','ke','kō','ko','sa','shō','shū','sha',
 			'sho','shu','shi','su','se','sō','so','ta','chō','chū','cha','cho','chu','chi','tsu','te','tō','to','na',
 			'nyō','nyū','nya','nyo','nyu','ni','nu','ne','nō','no','ha','hyō','hyū','hya','hyo','hyu','hi','fu','he',
@@ -164,8 +164,8 @@ public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE
 			preg_replace(
 				['/(ッ|っ)([カキクケコ]|[かきくけこ])/u','/(ッ|っ)([サシスセソ]|[さしすせそ])/u','/(ッ|っ)([タチツテト]|[たちつてと])/u',
 				 '/(ッ|っ)([パピプペポ]|[ぱぴぷぺぽ])/u','/(ン|ん)([バビブベボパピプペポマミムメモ]|[ばびぶべぼぱぴぷぺぽまみむめも])/u',
-				 '/(ン|ん)([ヤユヨアイウエオ]|[やゆよあいうえお])/u'], 
-				['k$2','s$2','t$2','p$2','m$2','n’$2',], 
+				 '/(ン|ん)([ヤユヨアイウエオ]|[やゆよあいうえお])/u'],
+				['k$2','s$2','t$2','p$2','m$2','n’$2',],
 				$string
 			)
 		);
