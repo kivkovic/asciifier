@@ -5,6 +5,10 @@ namespace Kreso;
 class Asciifier {
 
 	public static function latin_to_ascii($string, $locale = FALSE, $force = TRUE) {
+		
+		if (!preg_match('/[^\x20-\x7E]/u', $string)) {
+			return $string;
+		}
 
 		$secondary = [];
 		if(stripos($locale, 'de') !== FALSE) $secondary = ['Ä'=>'Ae', 'ä'=>'ae', 'Ö'=>'Oe', 'ö'=>'oe', 'Ü'=>'UE', 'ü'=>'ue', 'ß'=>'ss',]; /* https://core.trac.wordpress.org/browser/tags/4.3.1/src/wp-includes/formatting.php#L1250 */
@@ -55,6 +59,10 @@ class Asciifier {
 	}
 
 public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE) {
+
+		if (!preg_match('/[^\x20-\x{024F}]/u', $string)) {
+			return $string;
+		}
 
 		// http://www.loc.gov/catdir/cpso/romanization/russian.pdf
 		// http://unicode.org/repos/cldr/trunk/common/transforms/Cyrillic-Latin.xml
