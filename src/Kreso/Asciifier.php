@@ -1,6 +1,10 @@
 <?php
 
-function latin_to_ascii($string, $locale = FALSE, $force = TRUE) {
+namespace Kreso;
+
+class Asciifier {
+
+	public static function latin_to_ascii($string, $locale = FALSE, $force = TRUE) {
 
 		$secondary = [];
 		if(stripos($locale, 'de') !== FALSE) $secondary = ['Ä'=>'Ae', 'ä'=>'ae', 'Ö'=>'Oe', 'ö'=>'oe', 'Ü'=>'UE', 'ü'=>'ue', 'ß'=>'ss',]; /* https://core.trac.wordpress.org/browser/tags/4.3.1/src/wp-includes/formatting.php#L1250 */
@@ -49,3 +53,4 @@ function latin_to_ascii($string, $locale = FALSE, $force = TRUE) {
 		// strip characters outside of Latin Basic if forced:
 		return $force ? preg_replace('/[^\x20-\x7E]/u', '', $string) : $string;
 	}
+}
