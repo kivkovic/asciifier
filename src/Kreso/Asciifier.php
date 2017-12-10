@@ -4,7 +4,7 @@ namespace Kreso;
 
 class Asciifier {
 
-	public static function latin_to_ascii($string, $locale = FALSE, $force = TRUE) {
+	public static function latin_to_ascii($string, $force = TRUE, $locale = FALSE) {
 		
 		if (!preg_match('/[^\x20-\x7E]/u', $string)) {
 			return $string;
