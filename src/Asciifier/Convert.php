@@ -4,16 +4,27 @@ namespace Asciifier;
 
 class Convert {
 
-	public static function latin_to_ascii($string, $force = TRUE, $locale = FALSE) {
+	public static function latin_to_ascii($string, $force = true, $locale = false) {
 
-		if (!preg_match('/[^\x20-\x7E]/u', $string)) {
+		if (!preg_match('/[^\\x20-\\x7E]/u', $string)) {
 			return $string;
 		}
 
-		$secondary = [];
-		if(stripos($locale, 'de') !== FALSE) $secondary = ['Ä'=>'Ae', 'ä'=>'ae', 'Ö'=>'Oe', 'ö'=>'oe', 'Ü'=>'UE', 'ü'=>'ue', 'ß'=>'ss',]; /* https://core.trac.wordpress.org/browser/tags/4.3.1/src/wp-includes/formatting.php#L1250 */
-		if(stripos($locale, 'da') !== FALSE) $secondary = ['Ø'=>'Oe', 'ø'=>'oe', 'Å'=>'Aa', 'å'=>'aa',]; /* https://core.trac.wordpress.org/browser/tags/4.3.1/src/wp-includes/formatting.php#L1258 */
-		if(stripos($locale, 'vi') !== FALSE) $secondary = ['Đ'=>'D' , 'đ'=>'d' ,]; /* https://en.wikipedia.org/wiki/D_with_stroke#Vietnamese */
+		var $secondary = [];
+
+		if ($locale) {
+			function arrays_to_dict(...$arguments) {
+				var $dictionary = [];
+				for ($i = 0; $i < count($arguments); $i++) {
+					$dictionary[$arguments[$i][0]] = $arguments[$i][1];
+				}
+				return $dictionary;
+			}
+
+			if(stripos($locale, 'de') !== false) $secondary = arrays_to_dict(['Ä','Ae'], ['ä','ae'], ['Ö','Oe'], ['ö','oe'], ['Ü','UE'], ['ü','ue'], ['ß','ss']); /* https://core.trac.wordpress.org/browser/tags/4.3.1/src/wp-includes/formatting.php#L1250 */
+			if(stripos($locale, 'da') !== false) $secondary = arrays_to_dict(['Ø','Oe'], ['ø','oe'], ['Å','Aa'], ['å','aa']); /* https://core.trac.wordpress.org/browser/tags/4.3.1/src/wp-includes/formatting.php#L1258 */
+			if(stripos($locale, 'vi') !== false) $secondary = arrays_to_dict(['Đ','D' ], ['đ','d']); /* https://en.wikipedia.org/wiki/D_with_stroke#Vietnamese */
+		}
 
 		$string = str_replace(
 			['À','à','Á','á','Â','â','Ã','ã','Ä','ä','Å','å','Æ','æ','Ç','ç','È','è','É','é','Ê','ê','Ë','ë','Ì','ì','Í','í',
@@ -55,12 +66,12 @@ class Convert {
 			 strtr($string, $secondary)
 		);
 		// strip characters outside of Latin Basic if forced:
-		return $force ? preg_replace('/[^\x20-\x7E]/u', '', $string) : $string;
+		return $force ? preg_replace('/[^\\x20-\\x7E]/u', '', $string) : $string;
 	}
 
-public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE) {
+public static function unicode_to_latin($string, $force = false, $locale = false) {
 
-		if (!preg_match('/[^\x20-\x{024F}]/u', $string)) {
+		if (!preg_match('/[^\\x20-\\x{024F}]/u', $string)) {
 			return $string;
 		}
 
@@ -178,6 +189,6 @@ public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE
 			)
 		);
 		// strip characters below Latin Extended-B if forced:
-		return $force ? preg_replace('/[^\x20-\x{024F}]/u', '', $string) : $string;
+		return $force ? preg_replace('/[^\\x20-\\x{024F}]/u', '', $string) : $string;
 	}
 }
