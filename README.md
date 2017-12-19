@@ -29,9 +29,9 @@ console.log(Convert.unicode_to_latin('Транслитерация'))
 The `Convert` class provides two static methods:
 
 - `latin_to_ascii($string, $force = true, $locale = false)`- transliterates all Latin characters in the given string into ASCII values. Takes the following arguments:
-  - `${string}` - string to transliterate
-  - `${force}` (*optional*) whether to purge remaining non-ASCII characters (those outside of the range `[\x20-\x7E]`) after the conversion
-  - `${locale}` (*optional*) may be a locale string (two-character [https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes](ISO 639-1)) used to override certain edge cases when a letter has multiple transliteration depending on the language used:
+  - `string` - string to transliterate
+  - `force` (*optional*) whether to purge remaining non-ASCII characters (those outside of the range `[\x20-\x7E]`) after the conversion
+  - `locale` (*optional*) may be a locale string (two-character [https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes](ISO 639-1)) used to override certain edge cases when a letter has multiple transliteration depending on the language used:
     - 'de': `ä -> ae, ö -> oe, ü -> ue, ß -> ss` instead of the default `ä -> a, ö -> o, ü -> u, ß -> s`
     - 'da': `ø -> oe, å -> aa` instead of the default `ø -> o, å -> a`
     - 'vi': `đ -> d` instead of the default `đ -> dj`
