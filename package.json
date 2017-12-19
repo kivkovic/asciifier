@@ -1,0 +1,20 @@
+{
+  "name": "asciifier",
+  "version": "0.0.9",
+  "description": "asciifier",
+  "main": "src/Asciifier/Convert.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kivkovic/asciifier.git"
+  },
+  "author": "Kresimir Ivkovic",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/kivkovic/asciifier/issues"
+  },
+  "homepage": "https://github.com/kivkovic/asciifier#readme"
+}
