@@ -1,11 +1,11 @@
 <?php
 
-namespace Kreso;
+namespace Asciifier;
 
-class Asciifier {
+class Convert {
 
 	public static function latin_to_ascii($string, $force = TRUE, $locale = FALSE) {
-		
+
 		if (!preg_match('/[^\x20-\x7E]/u', $string)) {
 			return $string;
 		}
@@ -89,7 +89,7 @@ public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE
 			'E','ē','E','i','I','o','O','y','Y','ō','Ō'],
 			$string
 		);
-				
+
 		// http://www.loc.gov/catdir/cpso/romanization/arabic.pdf
 		// https://en.wikipedia.org/wiki/Romanization_of_Arabic
 		$string = str_replace(
@@ -137,7 +137,7 @@ public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE
 		    't','t','d','b','b','e','e','m','m','m','l','l','ŋ','ŋ','o','o','o','o','o','d','q','x',],
 		   $string
 		);
-				
+
 		// http://unicode.org/repos/cldr/trunk/common/transforms/Katakana-Latin-BGN.xml
 		$string = str_replace(
 		   ['ア','イ','ウ','エ','オウ','オ','カ','キョウ','キュウ','キャ','キョ','キュ','キ','ク','ケ','コウ','コ','サ','ショウ','シュウ',
@@ -179,5 +179,5 @@ public static function unicode_to_latin($string, $force = FALSE, $locale = FALSE
 		);
 		// strip characters below Latin Extended-B if forced:
 		return $force ? preg_replace('/[^\x20-\x{024F}]/u', '', $string) : $string;
-	}	
+	}
 }
